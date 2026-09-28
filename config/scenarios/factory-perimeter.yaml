@@ -1,0 +1,24 @@
+sid: factory-perimeter
+name: 某制造园区周界防入侵与安全生产监测
+site: 华南 · 制造园区（周界约 1.2 km，含 2 个装卸区）
+client_type: 工业企业（园区安全生产）
+objective: 周界入侵早发现、重点区域越界告警、作业区安全帽佩戴合规
+record_days: 30
+requirements:
+  - 周界 1.2 km，需要 24 小时不间断警戒，夜间照度不足 0.1 lux
+  - 装卸区需要区分人员与车辆，避免叉车误报
+  - 作业区需要识别未佩戴安全帽人员，联动现场声光提示
+  - 视频留存不少于 30 天，供事后追溯
+extras:
+  - 与现有门禁系统做人员信息联动
+  - 报警事件推送至园区值班室大屏
+points:
+  - {pid: P01, purpose: 东侧周界入侵警戒, product_sku: IPC-B4-4M, quantity: 6, stream_mbps: 4.5, distance_m: 60, env: outdoor, zone: 东周界}
+  - {pid: P02, purpose: 西周界入侵警戒, product_sku: IPC-B4-4M, quantity: 6, stream_mbps: 4.5, distance_m: 60, env: outdoor, zone: 西周界}
+  - {pid: P03, purpose: 装卸区人员车辆区分, product_sku: IPC-B6-6M, quantity: 2, stream_mbps: 6.0, distance_m: 45, env: outdoor, zone: 装卸区}
+  - {pid: P04, purpose: 作业区安全帽合规, product_sku: IPC-B4-4M, quantity: 2, stream_mbps: 4.5, distance_m: 25, env: outdoor, zone: 作业区}
+rules:
+  - {rid: R1, kind: polygon, name: 东侧周界禁区, zone: [[0.1,0.5],[0.9,0.5],[0.9,0.95],[0.1,0.95]], classes: [person]}
+  - {rid: R2, kind: line, name: 西周界警戒线, line: [[0.05,0.6],[0.95,0.6]], classes: [person]}
+  - {rid: R3, kind: polygon, name: 装卸区车禁入区, zone: [[0.3,0.55],[0.7,0.55],[0.7,0.9],[0.3,0.9]], classes: [vehicle]}
+  - {rid: R4, kind: class_filter, name: 安全帽佩戴检查, classes: [helmet, person]}

@@ -1,0 +1,19 @@
+rules:
+  - {rid: R1, kind: polygon, name: 周界禁区, zone: [[0.1,0.55],[0.9,0.55],[0.9,0.95],[0.1,0.95]], classes: [person]}
+  - {rid: R2, kind: line, name: 警戒线, line: [[0.05,0.50],[0.95,0.50]], classes: [person]}
+  - {rid: R3, kind: class_filter, name: 安全帽检查, classes: [helmet, person]}
+demo_frames:
+  frames:
+    - - {cls: person, track: 1, bbox: [0.30, 0.60, 0.36, 0.80]}
+      - {cls: helmet, track: 1, bbox: [0.31, 0.58, 0.35, 0.64]}
+    - - {cls: person, track: 1, bbox: [0.30, 0.38, 0.36, 0.52]}
+    - - {cls: person, track: 2, bbox: [0.55, 0.62, 0.61, 0.82]}
+  truth:
+    - {rule: R1, track: 1}
+    - {rule: R2, track: 1}
+    - {rule: R1, track: 2}
+  detected:
+    - {rule: R1, track: 1}
+    - {rule: R2, track: 1}
+    - {rule: R1, track: 2}
+    - {rule: R1, track: 9}

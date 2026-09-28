@@ -1,0 +1,20 @@
+sid: campus
+name: 某高校校园安全与交通秩序管理
+site: 华东 · 高校校园（主环路 2.4 km，出入口 4 个）
+client_type: 教育行业（校园安全）
+objective: 出入口人车分流、主干道违停与逆行治理、重点区域滞留预警
+record_days: 30
+requirements:
+  - 4 个出入口需要人车分流统计，识别尾随进入
+  - 主环路需要检测车辆逆行与长时间违停
+  - 图书馆夜间需要滞留人员预警
+extras:
+  - 与校园一卡通数据打通，做异常时段出入比对
+points:
+  - {pid: P01, purpose: 出入口人车分流, product_sku: IPC-B6-6M, quantity: 4, stream_mbps: 6.0, distance_m: 30, env: outdoor, zone: 出入口}
+  - {pid: P02, purpose: 主环路违停与逆行, product_sku: IPC-B4-4M, quantity: 10, stream_mbps: 4.5, distance_m: 70, env: outdoor, zone: 主环路}
+  - {pid: P03, purpose: 图书馆夜间滞留, product_sku: IPC-D2-4M, quantity: 6, stream_mbps: 4.0, distance_m: 15, env: indoor, zone: 图书馆}
+rules:
+  - {rid: R1, kind: polygon, name: 出入口禁停区, zone: [[0.15,0.4],[0.85,0.4],[0.85,0.9],[0.15,0.9]], classes: [vehicle]}
+  - {rid: R2, kind: line, name: 环路逆行检测线, line: [[0.05,0.55],[0.95,0.55]], classes: [vehicle]}
+  - {rid: R3, kind: polygon, name: 图书馆闭馆滞留区, zone: [[0.2,0.45],[0.8,0.45],[0.8,0.9],[0.2,0.9]], classes: [person]}

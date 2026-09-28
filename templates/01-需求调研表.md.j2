@@ -1,0 +1,40 @@
+# 需求调研表 · {{ scenario.name }}
+
+| 项 | 内容 |
+|---|---|
+| 项目名称 | {{ scenario.name }} |
+| 建设地点 | {{ scenario.site }} |
+| 客户类型 | {{ scenario.client_type }} |
+| 核心目标 | {{ scenario.objective }} |
+| 视频留存 | {{ scenario.record_days }} 天 |
+| 摄像机总数 | {{ capacity.cameras }} 路 |
+
+## 一、业务需求
+
+{% for r in scenario.requirements %}
+{{ loop.index }}. {{ r }}
+{% endfor %}
+
+## 二、现场条件与点位规划
+
+| 点位 | 用途 | 推荐机型 | 数量 | 单路码率 | 主要监视距离 |
+|---|---|---|---:|---:|---:|
+{% for p in scenario.points %}
+| {{ p.pid }} | {{ p.purpose }} | {{ products[p.product_sku].name }} | {{ p.quantity }} | {{ p.stream_mbps }} Mbps | {{ p.distance_m }} m |
+{% endfor %}
+
+## 三、需客户确认事项
+
+- 机房/弱电间是否具备上架空间与不间断电源，机柜可用 U 位与散热条件。
+- 前端点位立杆、抱箱、穿管路由由谁提供，是否已有既有管道可复用。
+- 现有网络是否可划分独立 VLAN，是否允许新增 PoE 交换机。
+- 视频留存天数与是否需要对特定点位单独加密存储。
+- 告警事件的接收人、接收方式（值班室大屏 / 短信 / 平台推送）与响应流程。
+
+## 四、扩展需求
+
+{% for e in scenario.extras %}
+- {{ e }}
+{% endfor %}
+
+> 本表由需求调研阶段输出，作为技术方案与工程量清单的输入。最终以双方确认的现场勘查记录为准。

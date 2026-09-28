@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="382" viewBox="0 0 940 382" font-family="Microsoft YaHei, sans-serif">
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<text x="24" y="34" font-size="18" font-weight="bold" fill="#1F3864">某制造园区周界防入侵与安全生产监测 · 系统架构</text>
+<text x="24" y="54" font-size="12" fill="#5A5A5A">点位 16 路 ｜ 存储 27.94 TB ｜ 参考总价 13.00 万元</text>
+<rect x="24" y="70" rx="6" width="892" height="46" fill="#F4F6F9" stroke="#D6DCE5"/>
+<text x="40" y="98" font-size="13" font-weight="bold" fill="#1F3864">前端感知层</text>
+<rect x="200" y="78" rx="4" width="159" height="30" fill="#FFFFFF" stroke="#2E5FA3"/>
+<text x="210" y="98" font-size="11" fill="#000000">IPC 周界 / 球机 / 热成像</text>
+<rect x="371" y="78" rx="4" width="173" height="30" fill="#FFFFFF" stroke="#2E5FA3"/>
+<text x="381" y="98" font-size="11" fill="#000000">AI 摄像机（区域入侵·越界·安全帽）</text>
+<line x1="470" y1="116" x2="470" y2="132" stroke="#2E5FA3" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="24" y="138" rx="6" width="892" height="46" fill="#F4F6F9" stroke="#D6DCE5"/>
+<text x="40" y="166" font-size="13" font-weight="bold" fill="#1F3864">网络传输层</text>
+<rect x="200" y="146" rx="4" width="150" height="30" fill="#FFFFFF" stroke="#2E5FA3"/>
+<text x="210" y="166" font-size="11" fill="#000000">PoE 接入交换机</text>
+<rect x="362" y="146" rx="4" width="150" height="30" fill="#FFFFFF" stroke="#2E5FA3"/>
+<text x="372" y="166" font-size="11" fill="#000000">汇聚交换机 + 千兆/万兆上联</text>
+<line x1="470" y1="184" x2="470" y2="200" stroke="#2E5FA3" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="24" y="206" rx="6" width="892" height="46" fill="#F4F6F9" stroke="#D6DCE5"/>
+<text x="40" y="234" font-size="13" font-weight="bold" fill="#1F3864">存储与算力层</text>
+<rect x="200" y="214" rx="4" width="150" height="30" fill="#FFFFFF" stroke="#2E5FA3"/>
+<text x="210" y="234" font-size="11" fill="#000000">NVR / CVR 视频存储</text>
+<rect x="362" y="214" rx="4" width="152" height="30" fill="#FFFFFF" stroke="#2E5FA3"/>
+<text x="372" y="234" font-size="11" fill="#000000">边缘 AI 盒子（规则二次研判）</text>
+<line x1="470" y1="252" x2="470" y2="268" stroke="#2E5FA3" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="24" y="274" rx="6" width="892" height="46" fill="#F4F6F9" stroke="#D6DCE5"/>
+<text x="40" y="302" font-size="13" font-weight="bold" fill="#1F3864">平台应用层</text>
+<rect x="200" y="282" rx="4" width="150" height="30" fill="#FFFFFF" stroke="#2E5FA3"/>
+<text x="210" y="302" font-size="11" fill="#000000">视频综合管理平台</text>
+<rect x="362" y="282" rx="4" width="150" height="30" fill="#FFFFFF" stroke="#2E5FA3"/>
+<text x="372" y="302" font-size="11" fill="#000000">门禁 / 报警 / 消防联动</text>
+<rect x="524" y="282" rx="4" width="150" height="30" fill="#FFFFFF" stroke="#2E5FA3"/>
+<text x="534" y="302" font-size="11" fill="#000000">看板与报表</text>
+<defs><marker id="a" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#2E5FA3"/></marker></defs>
+</svg>
