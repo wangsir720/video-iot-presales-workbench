@@ -19,6 +19,10 @@ class Product:
     unit_price_ref: float = 0.0
     capacity_ch: int = 0
     note: str = ""
+    sensor: str = ""
+    pixel_w: int = 0
+    pixel_h: int = 0
+    focal_mm: float = 0.0
 
 
 @dataclass
@@ -31,6 +35,8 @@ class CameraPoint:
     distance_m: float
     env: str = "outdoor"
     zone: str = ""
+    level: str = "detect"
+    install_height_m: float = 0.0
 
 
 @dataclass

@@ -25,7 +25,8 @@ def render_all(template_dir, out_dir, ctx):
                       ("02-技术方案书.md.j2", "02-技术方案书.md"),
                       ("04-TCO对比.md.j2", "04-TCO对比.md"),
                       ("05-POC测试报告.md.j2", "05-POC测试报告.md"),
-                      ("06-技术标偏离表.md.j2", "06-技术标偏离表.md")]:
+                      ("06-技术标偏离表.md.j2", "06-技术标偏离表.md"),
+                      ("07-点位与镜头估算.md.j2", "07-点位与镜头估算.md")]:
         text = render(template_dir, tpl, ctx)
         outs.append(save(text, os.path.join(out_dir, name)))
     return outs

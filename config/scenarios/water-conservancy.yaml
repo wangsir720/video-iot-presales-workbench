@@ -12,9 +12,9 @@ requirements:
 extras:
   - 与水位、雨量监测数据联动，做汛期加密巡测
 points:
-  - {pid: P01, purpose: 深水区人员闯入预警, product_sku: TH-256-2M, quantity: 3, stream_mbps: 3.0, distance_m: 200, env: outdoor, zone: 深水区}
-  - {pid: P02, purpose: 河道非法作业监测, product_sku: IPC-B6-6M, quantity: 8, stream_mbps: 6.0, distance_m: 90, env: outdoor, zone: 河道}
-  - {pid: P03, purpose: 闸站全景巡查, product_sku: PTZ-25X-4M, quantity: 3, stream_mbps: 8.0, distance_m: 150, env: outdoor, zone: 闸站}
+  - {pid: P01, purpose: 深水区人员闯入预警, product_sku: TH-256-2M, quantity: 3, stream_mbps: 3.0, distance_m: 200, env: outdoor, zone: 深水区, level: detect, install_height_m: 6.0}
+  - {pid: P02, purpose: 河道非法作业监测, product_sku: IPC-B6-6M, quantity: 8, stream_mbps: 6.0, distance_m: 90, env: outdoor, zone: 河道, level: detect, install_height_m: 6.0}
+  - {pid: P03, purpose: 闸站全景巡查, product_sku: PTZ-25X-4M, quantity: 3, stream_mbps: 8.0, distance_m: 150, env: outdoor, zone: 闸站, level: observe, install_height_m: 8.0}
 rules:
   - {rid: R1, kind: polygon, name: 深水区禁入, zone: [[0.2,0.5],[0.8,0.5],[0.8,0.95],[0.2,0.95]], classes: [person]}
   - {rid: R2, kind: polygon, name: 采砂作业区, zone: [[0.1,0.55],[0.6,0.55],[0.6,0.9],[0.1,0.9]], classes: [vehicle, person]}

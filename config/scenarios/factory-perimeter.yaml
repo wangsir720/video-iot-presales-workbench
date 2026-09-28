@@ -13,10 +13,10 @@ extras:
   - 与现有门禁系统做人员信息联动
   - 报警事件推送至园区值班室大屏
 points:
-  - {pid: P01, purpose: 东侧周界入侵警戒, product_sku: IPC-B4-4M, quantity: 6, stream_mbps: 4.5, distance_m: 60, env: outdoor, zone: 东周界}
-  - {pid: P02, purpose: 西周界入侵警戒, product_sku: IPC-B4-4M, quantity: 6, stream_mbps: 4.5, distance_m: 60, env: outdoor, zone: 西周界}
-  - {pid: P03, purpose: 装卸区人员车辆区分, product_sku: IPC-B6-6M, quantity: 2, stream_mbps: 6.0, distance_m: 45, env: outdoor, zone: 装卸区}
-  - {pid: P04, purpose: 作业区安全帽合规, product_sku: IPC-B4-4M, quantity: 2, stream_mbps: 4.5, distance_m: 25, env: outdoor, zone: 作业区}
+  - {pid: P01, purpose: 东侧周界入侵警戒, product_sku: IPC-B4-4M, quantity: 6, stream_mbps: 4.5, distance_m: 60, env: outdoor, zone: 东周界, level: detect, install_height_m: 4.0}
+  - {pid: P02, purpose: 西周界入侵警戒, product_sku: IPC-B4-4M, quantity: 6, stream_mbps: 4.5, distance_m: 60, env: outdoor, zone: 西周界, level: detect, install_height_m: 4.0}
+  - {pid: P03, purpose: 装卸区人员车辆区分, product_sku: IPC-B6-6M, quantity: 2, stream_mbps: 6.0, distance_m: 45, env: outdoor, zone: 装卸区, level: observe, install_height_m: 5.0}
+  - {pid: P04, purpose: 作业区安全帽合规, product_sku: IPC-B4-4M, quantity: 2, stream_mbps: 4.5, distance_m: 25, env: outdoor, zone: 作业区, level: recognize, install_height_m: 3.0}
 rules:
   - {rid: R1, kind: polygon, name: 东侧周界禁区, zone: [[0.1,0.5],[0.9,0.5],[0.9,0.95],[0.1,0.95]], classes: [person]}
   - {rid: R2, kind: line, name: 西周界警戒线, line: [[0.05,0.6],[0.95,0.6]], classes: [person]}

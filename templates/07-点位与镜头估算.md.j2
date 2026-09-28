@@ -1,0 +1,45 @@
+# 点位设计与镜头估算 · {{ scenario.name }}
+
+## 一、估算口径
+
+| 项 | 取值与说明 |
+|---|---|
+| 估算方法 | 覆盖宽度 W = 靶面宽度 × 监视距离 ÷ 焦距；目标处像素密度 ρ = 图像水平像素 × 焦距 ÷ (靶面宽度 × 监视距离) |
+| 靶面档位 | 取公开通用档位（16:9 常见值）：1/3" = 4.80×2.70 mm，1/2.9" = 5.00×2.81 mm，1/2.8" = 5.37×3.02 mm，1/1.8" = 7.20×4.05 mm |
+| 密度分级 | 采用 IEC/EN 62676-4 常用的 DORI 口径：监视 12.5 / 探测 25 / 观察 62.5 / 识别 125 / 辨识 250（px/m） |
+| 建议焦距 | 在 2.8 / 4 / 6 / 8 / 12 / 16 / 25 / 50 mm 标准阶梯上选取满足密度要求的最近档位 |
+
+## 二、点位估算结果
+
+本次共 {{ optics.summary.points }} 个点位，其中 {{ optics.summary.checked }} 个可做几何估算、{{ optics.summary.ok }} 个满足目标密度要求、{{ optics.summary.ng }} 个需调整；另有 {{ optics.summary.skipped }} 个非可见光成像点位不适用本表。
+
+| 点位 | 用途 | 机型 | 靶面 | 分辨率 | 焦距 | 水平视场角 | 监视距离 | 覆盖（宽×高） | 像素密度 | 目标等级 | 判定 |
+|---|---|---|---|---:|---:|---:|---:|---|---:|---|---|
+{% for r in optics.rows %}
+{% if r.supported %}
+| {{ r.pid }} | {{ r.purpose }} | {{ r.sku }} | {{ r.sensor }}" | {{ r.pixel }} | {{ r.focal_mm }} mm | {{ r.fov_h_deg }}° | {{ r.distance_m }} m | {{ r.coverage_w_m }} × {{ r.coverage_h_m }} m | {{ r.ppm }} px/m | {{ r.level_label }}（{{ r.ppm_need }}） | {{ "满足" if r.ok else "需调整" }} |
+{% else %}
+| {{ r.pid }} | {{ r.purpose }} | {{ r.sku }} | — | — | — | — | {{ r.distance_m }} m | — | — | {{ r.level_label }} | 不适用 |
+{% endif %}
+{% endfor %}
+
+## 三、逐点位结论
+
+{% for r in optics.rows %}
+- **{{ r.pid }}（{{ r.purpose }}）**：{{ r.advice if r.advice else r.reason }}
+{% if r.supported and r.tilt_deg is defined %}
+  - 安装建议：俯角约 {{ r.tilt_deg }}°；各密度等级最远有效距离 —— 探测 {{ r.dori.detect }} m / 观察 {{ r.dori.observe }} m / 识别 {{ r.dori.recognize }} m / 辨识 {{ r.dori.identify }} m。
+{% endif %}
+{% endfor %}
+
+## 四、结论与后续
+
+1. 满足目标密度要求的点位可直接进入施工图深化；标记“需调整”的点位按建议更换焦距或压缩监视距离后复算。
+2. 现场勘查时需复核实际安装高度、俯角与遮挡，本表按水平正视估算，未计入俯角引起的纵深压缩与近端盲区。
+3. 夜间与逆光条件下的成像表现无法在离线环境验证，需在现场按典型时段做实测抽查。
+
+## 五、边界说明
+
+- 靶面档位、镜头焦距与 DORI 密度均为公开通用口径，用于方案阶段估算；正式设计以厂商正式彩页与现场实测为准。
+- 变焦机型按中段焦距估算，实际部署需在焦段内标定。
+- 热成像点位的探测能力取决于探测器像元间距与目标温差，本表不适用。
